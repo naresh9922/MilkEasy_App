@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:milkeasy/collection.dart';
 import 'package:milkeasy/main.dart';
 
 //THis is Test
@@ -25,9 +26,15 @@ class _loginState extends State<login> {
 
     final http.Response response = await http.post(url, body: (data));
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 && usertype == "Admin") {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => MyHomePage(title: "")));
+    } else if (response.statusCode == 200 && usertype == "Collector") {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => collection()));
+    } else if (response.statusCode == 200 && usertype == "Farmer") {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => collection()));
     } else {
       // Failed login
       showDialog(
