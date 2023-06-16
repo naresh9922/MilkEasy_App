@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "422716658466",
+    "project_id": "milkeasy-f09e8",
+    "storage_bucket": "milkeasy-f09e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422716658466:android:acc7f38f4ff9b0b93f4b7b",
+        "android_client_info": {
+          "package_name": "com.example.milkeasy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422716658466-c95h1hlv0radfn99pgo7pd5fq8ga4rmi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyBj-3f4_-p7ZqV2CRfR8_P1zBA11w_t8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422716658466-c95h1hlv0radfn99pgo7pd5fq8ga4rmi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
