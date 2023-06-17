@@ -2,7 +2,7 @@
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:milkeasy/Farmer_homepage.dart';
-import 'package:milkeasy/api/CollectorHomepage.dart';
+import 'package:milkeasy/CollectorHomepage.dart';
 import 'package:milkeasy/main.dart';
 
 class login extends StatefulWidget {
@@ -153,6 +153,7 @@ class _loginState extends State<login> {
                             borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ))),
+                    keyboardType: TextInputType.emailAddress,
                     onChanged: ((value) {
                       setState(() {
                         email = value;
@@ -169,6 +170,7 @@ class _loginState extends State<login> {
                         border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10)))),
+                    keyboardType: TextInputType.emailAddress,
                     onChanged: (value) {
                       setState(() {
                         password = value;
@@ -183,17 +185,17 @@ class _loginState extends State<login> {
                       child: ElevatedButton(
                           onPressed: _login, child: const Text('Login'))),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      child: Text(
-                        "Forgot password",
-                      ),
-                      onPressed: () {},
-                    ),
-                  ],
-                )
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: [
+                //     TextButton(
+                //       child: Text(
+                //         "Forgot password",
+                //       ),
+                //       onPressed: () {},
+                //     ),
+                //   ],
+                // )
               ],
             ),
           ),
