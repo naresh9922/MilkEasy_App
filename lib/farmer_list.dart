@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -65,7 +64,6 @@ class _farmer_listState extends State<farmer_list> {
                 DataCell(Text(listRes[index]['mobile'].toString())),
                 DataCell(Text(listRes[index]['upiid'].toString())),
                 DataCell(Text(listRes[index]['address'].toString())),
-                // DataCell(Text(listRes[index]['_id'].toString())),
               ],
             ),
           ),

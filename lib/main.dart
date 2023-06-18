@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Text('Feedback',
                         style: TextStyle(fontSize: 30, color: Colors.brown)),
                     Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: TextField(
                         controller: nameController,
                         decoration: const InputDecoration(
@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: TextField(
                         controller: EmailController,
                         decoration: const InputDecoration(
@@ -147,10 +147,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: TextField(
                         controller: FeedbackController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10),
                             labelText: 'Feedback',
@@ -185,59 +185,59 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container(
                     width: double.infinity,
                     color: Colors.grey.shade600,
-                    child: Center(
-                      child: const Text(
+                    child: const Center(
+                      child: Text(
                         "Contact us",
                         style: TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.all(5),
-                    child: Card(
+                    margin: const EdgeInsets.all(5),
+                    child: const Card(
                       color: Color.fromARGB(255, 238, 238, 235),
                       elevation: 20,
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(15.0),
                             child: Column(
                               // 1 address
                               children: [
                                 Row(
-                                  children: const [
+                                  children: [
                                     Icon(Icons.location_city),
                                     Text(" Address:")
                                   ],
                                 ),
-                                const Text(
+                                Text(
                                     "Beside Imcc college, Kothurd. Pune - 401037"),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(15.0),
                             child: Wrap(
-                              children: const [
+                              children: [
                                 Icon(Icons.phone),
                                 Text(' Phone : 1234567890,  0987654321'),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(15.0),
                             child: Wrap(
-                              children: const [
+                              children: [
                                 Icon(Icons.email),
                                 Text(' Email: milkeasy1234@gmail.com')
                               ],
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(10.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: const [
+                              children: [
                                 Icon(Icons.facebook),
                                 Icon(Icons.facebook),
                                 Icon(Icons.facebook),
@@ -275,47 +275,47 @@ class memuItem extends StatelessWidget {
   final List DrawerItemList = [
     {
       "title": 'Profile',
-      "traling": Icon(Icons.chevron_right),
+      "traling": const Icon(Icons.chevron_right),
       'action_id': 1,
     },
     {
       "title": 'Set Rate',
-      "traling": Icon(Icons.chevron_right),
+      "traling": const Icon(Icons.chevron_right),
       'action_id': 2,
     },
     {
       "title": 'Add Farmer/Collector',
-      "traling": Icon(Icons.chevron_right),
+      "traling": const Icon(Icons.chevron_right),
       'action_id': 3,
     },
     {
       "title": 'add Collection',
-      "traling": Icon(Icons.chevron_right),
+      "traling": const Icon(Icons.chevron_right),
       'action_id': 4,
     },
     {
       "title": 'Logout',
-      "traling": Icon(Icons.chevron_right),
+      "traling": const Icon(Icons.chevron_right),
       'action_id': 5,
     },
     {
       "title": 'Collector list',
-      "traling": Icon(Icons.chevron_right),
+      "traling": const Icon(Icons.chevron_right),
       'action_id': 6,
     },
     {
       "title": 'view Collection',
-      "traling": Icon(Icons.chevron_right),
+      "traling": const Icon(Icons.chevron_right),
       'action_id': 7,
     },
     {
       "title": 'Farmer list',
-      "traling": Icon(Icons.chevron_right),
+      "traling": const Icon(Icons.chevron_right),
       'action_id': 8,
     },
     {
       "title": 'Feedback',
-      "traling": Icon(Icons.chevron_right),
+      "traling": const Icon(Icons.chevron_right),
       'action_id': 9,
     },
   ];
@@ -327,14 +327,14 @@ class memuItem extends StatelessWidget {
       width: 250,
       child: Drawer(
         child: ListView(children: [
-          ListTile(
+          const ListTile(
             leading: CircleAvatar(
                 // backgroundImage: NetworkImage(""),
                 ),
             title: Text('Naresh Joshi'),
             subtitle: Text('9922338844'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 2,
           ),
           ...DrawerItemList.map((e) {
@@ -345,32 +345,32 @@ class memuItem extends StatelessWidget {
                 trailing: e['trailing'],
                 onTap: (() {
                   if (e['action_id'] == 1) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => profile()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const profile()));
                   } else if (e['action_id'] == 2) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Set_Rate()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Set_Rate()));
                   } else if (e['action_id'] == 3) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => add_farmer_collector()));
+                        builder: (context) => const add_farmer_collector()));
                   } else if (e['action_id'] == 4) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Collection_form()));
+                        builder: (context) => const Collection_form()));
                   } else if (e['action_id'] == 5) {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) => login()));
-                  } else if (e['action_id'] == 6) {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => UserList()));
+                        MaterialPageRoute(builder: (context) => const login()));
+                  } else if (e['action_id'] == 6) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const UserList()));
                   } else if (e['action_id'] == 7) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MilkCollectionList()));
+                        builder: (context) => const MilkCollectionList()));
                   } else if (e['action_id'] == 8) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => farmer_list()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const farmer_list()));
                   } else if (e['action_id'] == 9) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => GetFeedback()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const GetFeedback()));
                   }
                 }));
           }).toList(),
