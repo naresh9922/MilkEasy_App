@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:milkeasy/api/collection_api.dart';
 import 'package:http/http.dart' as http;
@@ -173,7 +171,7 @@ class _Collection_formState extends State<Collection_form> {
                 validator: (value) {
                   if (value == null ||
                       value.isEmpty ||
-                      !RegExp(r'(^(?:[+0]9)?[0-9])').hasMatch(value)) {
+                      !RegExp(r'(^(?:[+0]9)?[10-12])').hasMatch(value)) {
                     return 'Please enter fat';
                   }
                   return null;

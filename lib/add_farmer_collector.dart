@@ -19,7 +19,6 @@ class _Add_farmer_collectorState extends State<add_farmer_collector> {
   var passwordController = TextEditingController();
 
   List<String> location = ['Admin', 'Collector', 'Farmer'];
-  // String _selectedLocation = "";
   String _value = "null";
 
   void _submitForm() {
@@ -159,7 +158,7 @@ class _Add_farmer_collectorState extends State<add_farmer_collector> {
                     validator: (value) {
                       if (value == null ||
                           value.isEmpty ||
-                          !RegExp("^[a-z][a-z '-.,]{0,31}").hasMatch(value)) {
+                          !RegExp("([A-Z]|[a-z]){2,50}").hasMatch(value)) {
                         return 'Please enter valid name';
                       }
                       return null;

@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Api {
-  static const baseurl = "http://127.0.0.1:2000/";
+  static const baseurl = "http://127.0.0.1:5000/api/";
 //post method ---------------------------------------------
 
-  static AddFCA(Map Fdata) async {
+  static AddProduct(Map Fdata) async {
     print(Fdata);
-    var url = Uri.parse("${baseurl}user/create");
+    var url = Uri.parse("${baseurl}product/create");
     try {
       final res = await http.post(url,
           body: Fdata); // here we have to pass url and body

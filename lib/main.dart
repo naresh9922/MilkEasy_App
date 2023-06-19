@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:milkeasy/Add_products.dart';
 import 'package:milkeasy/add_farmer_collector.dart';
 import 'package:milkeasy/Collection_Form.dart';
 import 'package:milkeasy/Set_Rate.dart';
@@ -294,11 +295,6 @@ class memuItem extends StatelessWidget {
       'action_id': 4,
     },
     {
-      "title": 'Logout',
-      "traling": const Icon(Icons.chevron_right),
-      'action_id': 5,
-    },
-    {
       "title": 'Collector list',
       "traling": const Icon(Icons.chevron_right),
       'action_id': 6,
@@ -317,6 +313,16 @@ class memuItem extends StatelessWidget {
       "title": 'Feedback',
       "traling": const Icon(Icons.chevron_right),
       'action_id': 9,
+    },
+    {
+      "title": 'Add Products',
+      "traling": const Icon(Icons.chevron_right),
+      'action_id': 10,
+    },
+    {
+      "title": 'Logout',
+      "traling": const Icon(Icons.chevron_right),
+      'action_id': 5,
     },
   ];
 
@@ -371,6 +377,9 @@ class memuItem extends StatelessWidget {
                   } else if (e['action_id'] == 9) {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const GetFeedback()));
+                  } else if (e['action_id'] == 10) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const AddProducts()));
                   }
                 }));
           }).toList(),
