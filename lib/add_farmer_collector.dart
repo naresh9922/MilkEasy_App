@@ -29,7 +29,7 @@ class _Add_farmer_collectorState extends State<add_farmer_collector> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              content: Text(
+              content: const Text(
                 'Select userType',
                 style: TextStyle(color: Colors.orange),
               ),
@@ -68,10 +68,6 @@ class _Add_farmer_collectorState extends State<add_farmer_collector> {
                 TextButton(
                   child: Text('OK'),
                   onPressed: () {
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => add_farmer_collector()));
                     Navigator.of(context).pop();
 
                     _formKey.currentState?.reset();

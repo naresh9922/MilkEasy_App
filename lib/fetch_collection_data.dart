@@ -58,7 +58,7 @@ class _MilkCollectionListState extends State<MilkCollectionList> {
             (index) => DataRow(
               cells: [
                 DataCell(Text('${index + 1}')),
-                DataCell(Text(listRes[index]['name'].toString())),
+                DataCell(Text(listRes[index]['Farmer_name'].toString())),
                 DataCell(Text(listRes[index]['shift'].toString())),
                 DataCell(Text(listRes[index]['fat'].toString())),
                 DataCell(Text(listRes[index]['qty'].toString())),

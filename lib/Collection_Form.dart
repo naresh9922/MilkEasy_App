@@ -6,15 +6,14 @@ import 'dart:convert';
 import 'package:milkeasy/dataclass/UserName.dart';
 
 class Collection_form extends StatefulWidget {
-  const Collection_form({super.key});
+  const Collection_form({super.key, required this.collectorId});
+  final String collectorId;
   @override
   State<Collection_form> createState() => _Collection_formState();
 }
 
 class _Collection_formState extends State<Collection_form> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  var nameController = TextEditingController();
   var fatController = TextEditingController();
   var qtyController = TextEditingController();
   String? _dropDownValue;
@@ -22,8 +21,9 @@ class _Collection_formState extends State<Collection_form> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       var data = {
+        "collectorId": collectorId,
         "shift": _dropDownValue,
-        "name": nameController.text,
+        "Farmer_name": selectedUsername!.name,
         "fat": fatController.text,
         "qty": qtyController.text,
       };
@@ -34,7 +34,7 @@ class _Collection_formState extends State<Collection_form> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Success'),
-            content: const Text('User added successfully'),
+            content: const Text('Milk Collected successfully'),
             actions: [
               TextButton(
                 child: const Text('OK'),
@@ -52,11 +52,13 @@ class _Collection_formState extends State<Collection_form> {
 
   List<Username> usernames = [];
   Username? selectedUsername;
+  late String collectorId;
 
   @override
   void initState() {
     super.initState();
     fetchUsernames();
+    collectorId = widget.collectorId;
   }
 
   Future<void> fetchUsernames() async {
@@ -171,7 +173,7 @@ class _Collection_formState extends State<Collection_form> {
                 validator: (value) {
                   if (value == null ||
                       value.isEmpty ||
-                      !RegExp(r'(^(?:[+0]9)?[10-12])').hasMatch(value)) {
+                      !RegExp('[0-9]').hasMatch(value)) {
                     return 'Please enter fat';
                   }
                   return null;

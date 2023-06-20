@@ -59,7 +59,7 @@ class _farmer_listState extends State<farmer_list> {
               cells: [
                 DataCell(Text('${index + 1}')),
                 DataCell(Text(listRes[index]['usertype'].toString())),
-                DataCell(Text(listRes[index]['name'].toString())),
+                DataCell(Text(listRes[index]['Farmer_name'].toString())),
                 DataCell(Text(listRes[index]['email'].toString())),
                 DataCell(Text(listRes[index]['mobile'].toString())),
                 DataCell(Text(listRes[index]['upiid'].toString())),

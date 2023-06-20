@@ -30,17 +30,15 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      // home: const MyHomePage(
-      //   title: "",
-      // ),
       home: const login(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title, required this.data});
   final String title;
+  final String data;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -50,21 +48,21 @@ class _MyHomePageState extends State<MyHomePage> {
   var nameController = TextEditingController();
   var EmailController = TextEditingController();
   var FeedbackController = TextEditingController();
+  String get collectorId => widget.data;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: memuItem(),
+        drawer: memuItem(collectorId: collectorId),
         appBar: AppBar(
           title: const Text('MilkEasy'),
-          actions: const [
+          actions: [
             Row(
               children: [
                 Padding(
                   padding: EdgeInsets.only(right: 10.0),
-                  child: Text('Hi Naresh'),
+                  child: Text(widget.data),
                 ),
-                // memuItem(),
               ],
             )
           ],
@@ -273,6 +271,8 @@ class _MyHomePageState extends State<MyHomePage> {
 //---------------------------------------------------------------------------------------------------------
 
 class memuItem extends StatelessWidget {
+  final String collectorId;
+  memuItem({required this.collectorId});
   final List DrawerItemList = [
     {
       "title": 'Profile',
@@ -361,7 +361,8 @@ class memuItem extends StatelessWidget {
                         builder: (context) => const add_farmer_collector()));
                   } else if (e['action_id'] == 4) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Collection_form()));
+                        builder: (context) =>
+                            Collection_form(collectorId: collectorId)));
                   } else if (e['action_id'] == 5) {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => const login()));

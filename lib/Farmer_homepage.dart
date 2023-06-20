@@ -5,8 +5,8 @@ import 'package:milkeasy/fetch_collection_data.dart';
 import 'api/feedback_api.dart';
 
 class FarmerHomePage extends StatefulWidget {
-  const FarmerHomePage({super.key});
-
+  const FarmerHomePage({super.key, required this.data});
+  final String data;
   @override
   State<FarmerHomePage> createState() => _FarmerHomePageState();
 }
@@ -22,14 +22,13 @@ class _FarmerHomePageState extends State<FarmerHomePage> {
         drawer: memuItem(),
         appBar: AppBar(
           title: const Text('MilkEasy'),
-          actions: const [
+          actions: [
             Row(
               children: [
                 Padding(
                   padding: EdgeInsets.only(right: 10.0),
-                  child: Text('Hi Naresh'),
+                  child: Text(widget.data),
                 ),
-                // memuItem(),
               ],
             )
           ],

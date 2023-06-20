@@ -13,6 +13,7 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
+  String mail = "";
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -23,18 +24,22 @@ class _loginState extends State<login> {
       'password': _passwordController.text,
       'usertype': usertype
     };
-
+    mail = _usernameController.text;
     final http.Response response = await http.post(url, body: (data));
-
     if (response.statusCode == 200 && usertype == "Admin") {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => MyHomePage(title: "")));
+      // print(mail);
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => MyHomePage(
+                title: "",
+                data: mail,
+              )));
     } else if (response.statusCode == 200 && usertype == "Collector") {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => CollectorHomePage()));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) =>
+              CollectorHomePage(mail: mail, info: "Admin", data: mail)));
     } else if (response.statusCode == 200 && usertype == "Farmer") {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => FarmerHomePage()));
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => FarmerHomePage(data: mail)));
     } else {
       // Failed login
       showDialog(
