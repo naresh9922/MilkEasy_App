@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:milkeasy/Collection_Form.dart';
 import 'package:milkeasy/api/feedback_api.dart';
 import 'package:milkeasy/login.dart';
-import 'package:milkeasy/profile.dart';
+import 'package:milkeasy/profile_collector.dart';
 import 'package:milkeasy/fetch_collection_data.dart';
 
 class CollectorHomePage extends StatefulWidget {
@@ -302,8 +302,8 @@ class memuItem extends StatelessWidget {
                 trailing: e['trailing'],
                 onTap: (() {
                   if (e['action_id'] == 1) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => profile()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => profile(data: collectorId)));
                   } else if (e['action_id'] == 4) {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>

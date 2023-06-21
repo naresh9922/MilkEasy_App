@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:milkeasy/login.dart';
-import 'package:milkeasy/profile.dart';
+import 'package:milkeasy/profile_collector.dart';
 import 'package:milkeasy/fetch_collection_data.dart';
+import 'package:milkeasy/prorile_farmer.dart';
 import 'api/feedback_api.dart';
 
 class FarmerHomePage extends StatefulWidget {
@@ -16,10 +17,19 @@ class _FarmerHomePageState extends State<FarmerHomePage> {
   var nameController = TextEditingController();
   var EmailController = TextEditingController();
   var FeedbackController = TextEditingController();
+
+  late String collectorId;
+
+  @override
+  void initState() {
+    super.initState();
+    collectorId = widget.data;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: memuItem(),
+        drawer: memuItem(collectorId: collectorId),
         appBar: AppBar(
           title: const Text('MilkEasy'),
           actions: [
@@ -237,6 +247,8 @@ class _FarmerHomePageState extends State<FarmerHomePage> {
 //---------------------------------------------------------------------------------------------------------
 
 class memuItem extends StatelessWidget {
+  final String collectorId;
+  memuItem({required this.collectorId});
   final List DrawerItemList = [
     {
       "title": 'Profile',
@@ -280,8 +292,9 @@ class memuItem extends StatelessWidget {
                 trailing: e['trailing'],
                 onTap: (() {
                   if (e['action_id'] == 1) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => profile()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            Farmer_profile(data: collectorId)));
                   } else if (e['action_id'] == 5) {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) => login()));

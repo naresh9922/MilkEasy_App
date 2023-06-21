@@ -6,7 +6,7 @@ import 'package:milkeasy/Set_Rate.dart';
 import 'package:milkeasy/farmer_list.dart';
 import 'package:milkeasy/get_feedback.dart';
 import 'package:milkeasy/login.dart';
-import 'package:milkeasy/profile.dart';
+import 'package:milkeasy/profile_collector.dart';
 import 'package:milkeasy/Collector_list.dart';
 import 'package:milkeasy/fetch_collection_data.dart';
 import 'api/feedback_api.dart';
@@ -352,7 +352,7 @@ class memuItem extends StatelessWidget {
                 onTap: (() {
                   if (e['action_id'] == 1) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const profile()));
+                        builder: (context) => profile(data: collectorId)));
                   } else if (e['action_id'] == 2) {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const Set_Rate()));

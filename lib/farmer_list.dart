@@ -21,7 +21,6 @@ class _farmer_listState extends State<farmer_list> {
         await http.post(Uri.parse("http://127.0.0.1:2000/user/fetchFarmers"));
     if (response.statusCode == 200) {
       setState(() {
-        // strRes = response.body;
         mapRes = json.decode(response.body);
         listRes = mapRes!['data'];
       });
