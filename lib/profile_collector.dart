@@ -23,7 +23,7 @@ class _profileState extends State<profile> {
     mailId = widget.data;
 
     response = await http
-        .post(Uri.parse("http://127.0.0.1:2000/user/fetchProfile/$mailId"));
+        .post(Uri.parse("http://192.168.1.7:2000/user/fetchProfile/$mailId"));
     if (response.statusCode == 200) {
       setState(() {
         mapRes = json.decode(response.body);

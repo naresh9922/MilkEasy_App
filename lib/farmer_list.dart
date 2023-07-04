@@ -18,12 +18,14 @@ class _farmer_listState extends State<farmer_list> {
   Future apicall() async {
     http.Response response;
     response =
-        await http.post(Uri.parse("http://127.0.0.1:2000/user/fetchFarmers"));
+        await http.post(Uri.parse("http://192.168.1.7:2000/user/fetchFarmers"));
     if (response.statusCode == 200) {
-      setState(() {
-        mapRes = json.decode(response.body);
-        listRes = mapRes!['data'];
-      });
+      if (mounted) {
+        setState(() {
+          mapRes = json.decode(response.body);
+          listRes = mapRes!['data'];
+        });
+      }
     }
   }
 

@@ -288,8 +288,7 @@ class memuItem extends StatelessWidget {
             leading: CircleAvatar(
                 // backgroundImage: NetworkImage(""),
                 ),
-            title: Text('Naresh Joshi'),
-            subtitle: Text('9922338844'),
+            title: Text(collectorId),
           ),
           SizedBox(
             height: 2,

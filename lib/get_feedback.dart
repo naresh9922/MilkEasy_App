@@ -18,7 +18,8 @@ class _GetFeedbackState extends State<GetFeedback> {
 
   Future apicall() async {
     http.Response response;
-    response = await http.post(Uri.parse("http://127.0.0.1:2000/feedback/get"));
+    response =
+        await http.post(Uri.parse("http://192.168.1.7:2000/feedback/get"));
     if (response.statusCode == 200) {
       setState(() {
         // strRes = response.body;

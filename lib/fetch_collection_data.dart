@@ -18,14 +18,16 @@ class _MilkCollectionListState extends State<MilkCollectionList> {
 
   Future apicall() async {
     http.Response response;
-    response =
-        await http.post(Uri.parse("http://127.0.0.1:2000/milk/getcollection"));
+    response = await http
+        .post(Uri.parse("http://192.168.1.7:2000/milk/getcollection"));
     if (response.statusCode == 200) {
-      setState(() {
-        // strRes = response.body;
-        mapRes = json.decode(response.body);
-        listRes = mapRes!['data'];
-      });
+      if (mounted) {
+        setState(() {
+          // strRes = response.body;
+          mapRes = json.decode(response.body);
+          listRes = mapRes!['data'];
+        });
+      }
     }
   }
 

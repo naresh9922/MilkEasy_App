@@ -63,14 +63,16 @@ class _Collection_formState extends State<Collection_form> {
 
   Future<void> fetchUsernames() async {
     final response =
-        await http.post(Uri.parse('http://127.0.0.1:2000/user/fetchFarmers'));
+        await http.post(Uri.parse('http://192.168.1.7:2000/user/fetchFarmers'));
     if (response.statusCode == 200) {
       final body = jsonDecode(response.body);
       final data = body['data'] as List<dynamic>;
       // print(data);
-      setState(() {
-        usernames = data.map((json) => Username.fromJson(json)).toList();
-      });
+      if (mounted) {
+        setState(() {
+          usernames = data.map((json) => Username.fromJson(json)).toList();
+        });
+      }
     }
   }
 
