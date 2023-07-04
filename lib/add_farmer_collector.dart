@@ -70,7 +70,14 @@ class _Add_farmer_collectorState extends State<add_farmer_collector> {
                   onPressed: () {
                     Navigator.of(context).pop();
 
-                    _formKey.currentState?.reset();
+                    _value = "null";
+                    nameController.text = "";
+                    userController.text = "";
+                    mobileController.text = "";
+                    emailController.text = "";
+                    upiController.text = "";
+                    addressController.text = "";
+                    passwordController.text = "";
                   },
                 ),
               ],

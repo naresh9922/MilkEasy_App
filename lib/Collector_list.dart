@@ -46,30 +46,32 @@ class _UserListState extends State<UserList> {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: DataTable(
-          columns: [
-            DataColumn(label: Text('ID')),
-            DataColumn(label: Text('User')),
-            DataColumn(label: Text('Name')),
-            DataColumn(label: Text('Email')),
-            DataColumn(label: Text('Mobile')),
-            DataColumn(label: Text('UPI ID')),
-            DataColumn(label: Text('Address')),
-            // DataColumn(label: Text('ID')),
-          ],
-          rows: List<DataRow>.generate(
-            listRes.length,
-            (index) => DataRow(
-              cells: [
-                DataCell(Text('${index + 1}')),
-                DataCell(Text(listRes[index]['usertype'].toString())),
-                DataCell(Text(listRes[index]['name'].toString())),
-                DataCell(Text(listRes[index]['email'].toString())),
-                DataCell(Text(listRes[index]['mobile'].toString())),
-                DataCell(Text(listRes[index]['upiid'].toString())),
-                DataCell(Text(listRes[index]['address'].toString())),
-                // DataCell(Text(listRes[index]['_id'].toString())),
-              ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: DataTable(
+            columns: [
+              DataColumn(label: Text('ID')),
+              DataColumn(label: Text('User')),
+              DataColumn(label: Text('Name')),
+              DataColumn(label: Text('Email')),
+              DataColumn(label: Text('Mobile')),
+              DataColumn(label: Text('UPI ID')),
+              DataColumn(label: Text('Address')),
+              // DataColumn(label: Text('ID')),
+            ],
+            rows: List<DataRow>.generate(
+              listRes.length,
+              (index) => DataRow(
+                cells: [
+                  DataCell(Text('${index + 1}')),
+                  DataCell(Text(listRes[index]['usertype'].toString())),
+                  DataCell(Text(listRes[index]['name'].toString())),
+                  DataCell(Text(listRes[index]['email'].toString())),
+                  DataCell(Text(listRes[index]['mobile'].toString())),
+                  DataCell(Text(listRes[index]['upiid'].toString())),
+                  DataCell(Text(listRes[index]['address'].toString())),
+                ],
+              ),
             ),
           ),
         ),

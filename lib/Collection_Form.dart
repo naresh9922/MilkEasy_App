@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:milkeasy/api/collection_api.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 
 import 'package:milkeasy/dataclass/UserName.dart';
 
@@ -29,6 +31,7 @@ class _Collection_formState extends State<Collection_form> {
       };
 
       Api.Collection(data);
+
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -39,13 +42,41 @@ class _Collection_formState extends State<Collection_form> {
               TextButton(
                 child: const Text('OK'),
                 onPressed: () {
+                  sendEmail();
+
                   Navigator.of(context).pop();
+                  collectorId = "";
+                  selectedUsername = null;
+                  _dropDownValue = "";
+                  fatController.text = "";
+                  qtyController.text = "";
                 },
               ),
             ],
           );
         },
       );
+    }
+  }
+
+  Future<void> sendEmail() async {
+    final username = 'getguruji1234@gmail.com';
+    final password = 'vroaaccameonlxjp';
+
+    final smtpServer = gmail(username, password);
+
+    final message = Message()
+      ..from = Address(username, 'MilkEasy')
+      ..recipients.add(collectorId)
+      ..subject = "Today's milk collection data"
+      ..text =
+          "Hello ${selectedUsername}, your milk quantity of ${fatController.text} liters is collected by our collector. Thank you!";
+
+    try {
+      final sendReport = await send(message, smtpServer);
+      print('Message sent: ' + sendReport.toString());
+    } catch (e) {
+      print('Error occurred while sending email: $e');
     }
   }
 // for drop down button list

@@ -46,26 +46,29 @@ class _MilkCollectionListState extends State<MilkCollectionList> {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: DataTable(
-          columns: [
-            DataColumn(label: Text('ID')),
-            DataColumn(label: Text('Farmer Name')),
-            DataColumn(label: Text('Shift')),
-            DataColumn(label: Text('Fat')),
-            DataColumn(label: Text('Qty')),
-            DataColumn(label: Text('Date')),
-          ],
-          rows: List<DataRow>.generate(
-            listRes.length,
-            (index) => DataRow(
-              cells: [
-                DataCell(Text('${index + 1}')),
-                DataCell(Text(listRes[index]['Farmer_name'].toString())),
-                DataCell(Text(listRes[index]['shift'].toString())),
-                DataCell(Text(listRes[index]['fat'].toString())),
-                DataCell(Text(listRes[index]['qty'].toString())),
-                DataCell(Text(listRes[index]['createdOn'].toString())),
-              ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: DataTable(
+            columns: [
+              DataColumn(label: Text('ID')),
+              DataColumn(label: Text('Farmer Name')),
+              DataColumn(label: Text('Shift')),
+              DataColumn(label: Text('Fat')),
+              DataColumn(label: Text('Qty')),
+              DataColumn(label: Text('Date')),
+            ],
+            rows: List<DataRow>.generate(
+              listRes.length,
+              (index) => DataRow(
+                cells: [
+                  DataCell(Text('${index + 1}')),
+                  DataCell(Text(listRes[index]['Farmer_name'].toString())),
+                  DataCell(Text(listRes[index]['shift'].toString())),
+                  DataCell(Text(listRes[index]['fat'].toString())),
+                  DataCell(Text(listRes[index]['qty'].toString())),
+                  DataCell(Text(listRes[index]['createdOn'].toString())),
+                ],
+              ),
             ),
           ),
         ),

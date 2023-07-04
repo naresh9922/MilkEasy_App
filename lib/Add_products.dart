@@ -40,8 +40,11 @@ class _AddProductsState extends State<AddProducts> {
                 child: Text('OK'),
                 onPressed: () {
                   Navigator.of(context).pop();
-
-                  _formKey.currentState?.reset();
+                  categortController.text = "";
+                  titleController.text = "";
+                  priceController.text = "";
+                  descController.text = "";
+                  imageController.text = "";
                 },
               ),
             ],

@@ -49,7 +49,7 @@ class _FarmerHomePageState extends State<FarmerHomePage> {
             children: [
               // --------------------------------------image ---------------------------------
               SizedBox(
-                  height: 250,
+                  height: 280,
                   width: double.infinity,
                   child: Image.asset("Assets/images/cow1.jpg")), // image
 
@@ -145,6 +145,9 @@ class _FarmerHomePageState extends State<FarmerHomePage> {
                             };
 
                             Api.Feedback(data);
+                            nameController.text = "";
+                            EmailController.text = "";
+                            FeedbackController.text = "";
                           },
                           child: const Text('Submit')),
                     )

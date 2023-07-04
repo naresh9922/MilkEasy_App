@@ -55,7 +55,7 @@ class _CollectorHomePageState extends State<CollectorHomePage> {
             children: [
               // --------------------------------------image ---------------------------------
               SizedBox(
-                  height: 250,
+                  height: 280,
                   width: double.infinity,
                   child: Image.asset("Assets/images/cow1.jpg")), // image
 
@@ -151,6 +151,9 @@ class _CollectorHomePageState extends State<CollectorHomePage> {
                             };
 
                             Api.Feedback(data);
+                            nameController.text = "";
+                            EmailController.text = "";
+                            FeedbackController.text = "";
                           },
                           child: const Text('Submit')),
                     )

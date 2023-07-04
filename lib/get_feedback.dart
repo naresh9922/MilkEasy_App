@@ -41,27 +41,65 @@ class _GetFeedbackState extends State<GetFeedback> {
       appBar: AppBar(
         title: Text("Feedbacks"),
       ),
+      // body: SizedBox(
+      //   height: 300,
+      //   child: SingleChildScrollView(
+      //     scrollDirection: Axis.vertical,
+      //     child: GridView.count(
+      //       crossAxisCount: 2,
+      //       children: [
+      //         DataTable(
+      //           columnSpacing: 16.0,
+      //           columns: [
+      //             DataColumn(label: Text('ID')),
+      //             DataColumn(label: Text('Name')),
+      //             DataColumn(label: Text('Mobile')),
+      //             DataColumn(label: Text('Feedback')),
+      //           ],
+      //           rows: List<DataRow>.generate(
+      //             listRes.length,
+      //             (index) => DataRow(
+      //               cells: [
+      //                 DataCell(Text('${index + 1}')),
+      //                 DataCell(Text(listRes[index]['name'].toString())),
+      //                 DataCell(Text(listRes[index]['mo_no'].toString())),
+      //                 DataCell(Container(
+      //                     width: double.infinity,
+      //                     child: Text(listRes[index]['feedback'].toString()))),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: DataTable(
-          columnSpacing: 16.0,
-          columns: [
-            DataColumn(label: Text('ID')),
-            DataColumn(label: Text('Name')),
-            DataColumn(label: Text('Mobile')),
-            DataColumn(label: Text('Feedback')),
-          ],
-          rows: List<DataRow>.generate(
-            listRes.length,
-            (index) => DataRow(
-              cells: [
-                DataCell(Text('${index + 1}')),
-                DataCell(Text(listRes[index]['name'].toString())),
-                DataCell(Text(listRes[index]['mo_no'].toString())),
-                DataCell(Container(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: DataTable(
+            columnSpacing: 16.0,
+            columns: [
+              DataColumn(label: Text('ID')),
+              DataColumn(label: Text('Name')),
+              DataColumn(label: Text('Mobile')),
+              DataColumn(label: Text('Feedback')),
+            ],
+            rows: List<DataRow>.generate(
+              listRes.length,
+              (index) => DataRow(
+                cells: [
+                  DataCell(Text('${index + 1}')),
+                  DataCell(Text(listRes[index]['name'].toString())),
+                  DataCell(Text(listRes[index]['mo_no'].toString())),
+                  DataCell(Container(
                     width: double.infinity,
-                    child: Text(listRes[index]['feedback'].toString()))),
-              ],
+                    child: Text(listRes[index]['feedback'].toString()),
+                  )),
+                ],
+              ),
             ),
           ),
         ),

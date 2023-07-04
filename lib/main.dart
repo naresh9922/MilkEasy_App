@@ -17,6 +17,7 @@ void main() {
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -45,6 +46,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   var nameController = TextEditingController();
   var EmailController = TextEditingController();
   var FeedbackController = TextEditingController();
@@ -74,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               // --------------------------------------image ---------------------------------
               SizedBox(
-                  height: 250,
+                  height: 275,
                   width: double.infinity,
                   child: Image.asset("Assets/images/cow1.jpg")), // image
 
@@ -145,18 +148,21 @@ class _MyHomePageState extends State<MyHomePage> {
                             )),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: TextField(
-                        controller: FeedbackController,
-                        decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            labelText: 'Feedback',
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                            )),
+                    Form(
+                      key: _formKey,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: TextField(
+                          controller: FeedbackController,
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              labelText: 'Feedback',
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              )),
+                        ),
                       ),
                     ),
                     Padding(
@@ -170,6 +176,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             };
 
                             Api.Feedback(data);
+                            nameController.text = "";
+                            EmailController.text = "";
+                            FeedbackController.text = "";
                           },
                           child: const Text('Submit')),
                     )
