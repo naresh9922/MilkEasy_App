@@ -275,11 +275,6 @@ class memuItem extends StatelessWidget {
   memuItem({required this.collectorId});
   final List DrawerItemList = [
     {
-      "title": 'Profile',
-      "traling": const Icon(Icons.chevron_right),
-      'action_id': 1,
-    },
-    {
       "title": 'Set Rate',
       "traling": const Icon(Icons.chevron_right),
       'action_id': 2,
@@ -350,10 +345,7 @@ class memuItem extends StatelessWidget {
                 ),
                 trailing: e['trailing'],
                 onTap: (() {
-                  if (e['action_id'] == 1) {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => profile(data: collectorId)));
-                  } else if (e['action_id'] == 2) {
+                  if (e['action_id'] == 2) {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const Set_Rate()));
                   } else if (e['action_id'] == 3) {

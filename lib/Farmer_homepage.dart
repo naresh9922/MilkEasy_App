@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:milkeasy/login.dart';
-import 'package:milkeasy/profile_collector.dart';
 import 'package:milkeasy/fetch_collection_data.dart';
 import 'package:milkeasy/prorile_farmer.dart';
 import 'api/feedback_api.dart';
