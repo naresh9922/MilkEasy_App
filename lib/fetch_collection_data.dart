@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class MilkCollectionList extends StatefulWidget {
-  const MilkCollectionList({super.key});
+  const MilkCollectionList();
 
   @override
   State<MilkCollectionList> createState() => _MilkCollectionListState();

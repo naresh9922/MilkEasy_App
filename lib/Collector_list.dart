@@ -42,7 +42,7 @@ class _UserListState extends State<UserList> {
     print(listRes.runtimeType);
     return Scaffold(
       appBar: AppBar(
-        title: Text("user list"),
+        title: Text("Collector list"),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,

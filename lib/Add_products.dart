@@ -58,7 +58,7 @@ class _AddProductsState extends State<AddProducts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Farmer/ Collector"),
+        title: const Text("Add Products"),
       ),
       body: SingleChildScrollView(
         child: Container(
