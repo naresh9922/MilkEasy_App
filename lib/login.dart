@@ -1,12 +1,15 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:milkeasy/Farmer_homepage.dart';
 import 'package:milkeasy/CollectorHomepage.dart';
 import 'package:milkeasy/main.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 class login extends StatefulWidget {
-  const login({super.key});
+  const login({Key? key}) : super(key: key);
 
   @override
   State<login> createState() => _loginState();
@@ -18,7 +21,6 @@ class _loginState extends State<login> {
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _login() async {
-    // var url = Uri.parse("http://192.168.137.97:2000/login/login");
     var url = Uri.parse("http://192.168.1.7:2000/login/login");
     var data = {
       'email': _usernameController.text,
@@ -27,20 +29,33 @@ class _loginState extends State<login> {
     };
     mail = _usernameController.text;
     final http.Response response = await http.post(url, body: (data));
-    if (response.statusCode == 200 && usertype == "Admin") {
-      // print(mail);
-      Navigator.of(context).push(MaterialPageRoute(
+    if (response.statusCode == 200) {
+      final responseData = json.decode(response.body);
+      final name = responseData['name'] as String;
+      if (usertype == "Admin") {
+        Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => MyHomePage(
-                title: "",
-                data: mail,
-              )));
-    } else if (response.statusCode == 200 && usertype == "Collector") {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) =>
-              CollectorHomePage(mail: mail, info: "Admin", data: mail)));
-    } else if (response.statusCode == 200 && usertype == "Farmer") {
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => FarmerHomePage(data: mail)));
+            title: "",
+            data: mail,
+            nam: name, // Pass the name to the next screen
+          ),
+        ));
+        print(name);
+      } else if (usertype == "Collector") {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => CollectorHomePage(
+            mail: mail,
+            info: "Admin",
+            data: mail,
+          ),
+        ));
+      } else if (usertype == "Farmer") {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => FarmerHomePage(
+            data: mail,
+          ),
+        ));
+      }
     } else {
       // Failed login
       showDialog(
@@ -60,6 +75,51 @@ class _loginState extends State<login> {
       );
     }
   }
+
+  // Future<void> _login() async {
+  //   // var url = Uri.parse("http://192.168.137.97:2000/login/login");
+  //   var url = Uri.parse("http://192.168.1.7:2000/login/login");
+  //   var data = {
+  //     'email': _usernameController.text,
+  //     'password': _passwordController.text,
+  //     'usertype': usertype
+  //   };
+  //   mail = _usernameController.text;
+  //   final http.Response response = await http.post(url, body: (data));
+  //   if (response.statusCode == 200 && usertype == "Admin") {
+  //     // print(mail);
+
+  //     Navigator.of(context).push(MaterialPageRoute(
+  //         builder: (context) => MyHomePage(
+  //               title: "",
+  //               data: mail,
+  //             )));
+  //   } else if (response.statusCode == 200 && usertype == "Collector") {
+  //     Navigator.of(context).push(MaterialPageRoute(
+  //         builder: (context) =>
+  //             CollectorHomePage(mail: mail, info: "Admin", data: mail)));
+  //   } else if (response.statusCode == 200 && usertype == "Farmer") {
+  //     Navigator.of(context).push(
+  //         MaterialPageRoute(builder: (context) => FarmerHomePage(data: mail)));
+  //   } else {
+  //     // Failed login
+  //     showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return AlertDialog(
+  //           title: Text('Login Error'),
+  //           content: Text('Invalid username or password.'),
+  //           actions: [
+  //             TextButton(
+  //               onPressed: () => Navigator.pop(context),
+  //               child: Text('OK'),
+  //             ),
+  //           ],
+  //         );
+  //       },
+  //     );
+  //   }
+  // }
 
   int? _value = 0;
   String usertype = "";

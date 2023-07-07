@@ -37,9 +37,11 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title, required this.data});
+  const MyHomePage(
+      {super.key, required this.title, required this.data, required this.nam});
   final String title;
   final String data;
+  final String nam;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -52,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var EmailController = TextEditingController();
   var FeedbackController = TextEditingController();
   String get collectorId => widget.data;
+  String get name => widget.nam;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(right: 10.0),
-                  child: Text(widget.data),
+                  child: Text("Hi $name"),
                 ),
               ],
             )
@@ -337,11 +340,11 @@ class memuItem extends StatelessWidget {
       width: 250,
       child: Drawer(
         child: ListView(children: [
-          const ListTile(
+          ListTile(
             leading: CircleAvatar(
                 // backgroundImage: NetworkImage(""),
                 ),
-            title: Text('Naresh Joshi'),
+            title: Text(collectorId),
             subtitle: Text('9922338844'),
           ),
           const SizedBox(

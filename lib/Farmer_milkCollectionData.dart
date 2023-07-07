@@ -32,8 +32,11 @@ class _FarmerMilkCollectionState extends State<FarmerMilkCollection> {
           // strRes = response.body;
           mapRes = json.decode(response.body);
           listRes = mapRes!['data'];
+          print("Fetched data: $listRes");
         });
       }
+    } else {
+      print("API call failed with status code: ${response.statusCode}");
     }
   }
 
