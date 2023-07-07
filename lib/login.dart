@@ -170,6 +170,7 @@ class _loginState extends State<login> {
                 Padding(
                   padding: EdgeInsets.only(top: 10.0, bottom: 20),
                   child: TextField(
+                    obscureText: true,
                     controller: _passwordController,
                     decoration: const InputDecoration(
                         labelText: 'Password',

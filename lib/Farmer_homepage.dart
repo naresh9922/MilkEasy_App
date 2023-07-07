@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:milkeasy/Farmer_milkCollectionData.dart';
 import 'package:milkeasy/login.dart';
-import 'package:milkeasy/fetch_collection_data.dart';
 import 'package:milkeasy/prorile_farmer.dart';
 import 'api/feedback_api.dart';
 
@@ -301,7 +301,8 @@ class memuItem extends StatelessWidget {
                         .push(MaterialPageRoute(builder: (context) => login()));
                   } else if (e['action_id'] == 7) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MilkCollectionList()));
+                        builder: (context) =>
+                            FarmerMilkCollection(data: collectorId)));
                   }
                 }));
           }).toList(),
