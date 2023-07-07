@@ -1,31 +1,28 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class FarmerMilkCollection extends StatefulWidget {
-  final String data;
+class Collectors_collection_Data extends StatefulWidget {
   final String name;
-  const FarmerMilkCollection(
-      {super.key, required this.data, required this.name});
+  const Collectors_collection_Data({required this.name});
 
   @override
-  State<FarmerMilkCollection> createState() => _FarmerMilkCollectionState();
+  State<Collectors_collection_Data> createState() => _MilkCollectionListState();
 }
 
-class _FarmerMilkCollectionState extends State<FarmerMilkCollection> {
+class _MilkCollectionListState extends State<Collectors_collection_Data> {
   String strRes = "";
   Map? mapRes;
   Map? dataRes;
-  late String email;
-  late String name;
   List listRes = [];
+  late String name;
 
   Future apicall() async {
     http.Response response;
-    email = widget.data;
-    response = await http.post(
-        Uri.parse("http://192.168.1.7:2000/milk/FarmerMilkcollection/$name"));
+    response = await http
+        //     .post(Uri.parse("http://192.168.137.97:2000/milk/CollectorsMilkcollection"));
+        .post(Uri.parse(
+            "http://192.168.1.7:2000/milk/CollectorsMilkcollection/$name"));
     if (response.statusCode == 200) {
       if (mounted) {
         setState(() {
@@ -34,20 +31,20 @@ class _FarmerMilkCollectionState extends State<FarmerMilkCollection> {
           listRes = mapRes!['data'];
         });
       }
-    } else {
-      print("API call failed with status code: ${response.statusCode}");
     }
   }
 
   @override
   void initState() {
-    super.initState();
     name = widget.name;
+
     apicall();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    print(listRes.runtimeType);
     return Scaffold(
       appBar: AppBar(
         title: Text("Milk Collection Data"),
@@ -69,6 +66,7 @@ class _FarmerMilkCollectionState extends State<FarmerMilkCollection> {
           child: DataTable(
             columns: [
               DataColumn(label: Text('ID')),
+              DataColumn(label: Text('Farmer Name')),
               DataColumn(label: Text('Collector Name')),
               DataColumn(label: Text('Shift')),
               DataColumn(label: Text('Fat')),
@@ -80,6 +78,7 @@ class _FarmerMilkCollectionState extends State<FarmerMilkCollection> {
               (index) => DataRow(
                 cells: [
                   DataCell(Text('${index + 1}')),
+                  DataCell(Text(listRes[index]['Farmer_name'].toString())),
                   DataCell(Text(listRes[index]['Collector_name'].toString())),
                   DataCell(Text(listRes[index]['shift'].toString())),
                   DataCell(Text(listRes[index]['fat'].toString())),

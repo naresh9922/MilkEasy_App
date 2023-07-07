@@ -53,6 +53,7 @@ class _MilkCollectionListState extends State<MilkCollectionList> {
             columns: [
               DataColumn(label: Text('ID')),
               DataColumn(label: Text('Farmer Name')),
+              DataColumn(label: Text('Collector Name')),
               DataColumn(label: Text('Shift')),
               DataColumn(label: Text('Fat')),
               DataColumn(label: Text('Qty')),
@@ -64,6 +65,7 @@ class _MilkCollectionListState extends State<MilkCollectionList> {
                 cells: [
                   DataCell(Text('${index + 1}')),
                   DataCell(Text(listRes[index]['Farmer_name'].toString())),
+                  DataCell(Text(listRes[index]['Collector_name'].toString())),
                   DataCell(Text(listRes[index]['shift'].toString())),
                   DataCell(Text(listRes[index]['fat'].toString())),
                   DataCell(Text(listRes[index]['qty'].toString())),

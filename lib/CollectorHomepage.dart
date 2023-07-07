@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:milkeasy/Collection_Form.dart';
+import 'package:milkeasy/Collectors_collection_data.dart';
 import 'package:milkeasy/api/feedback_api.dart';
 import 'package:milkeasy/login.dart';
 import 'package:milkeasy/profile_collector.dart';
-import 'package:milkeasy/fetch_collection_data.dart';
+import 'package:milkeasy/fetch_All_collection_data.dart';
 
 class CollectorHomePage extends StatefulWidget {
   final String data;
+  final String nam;
   const CollectorHomePage(
       {super.key,
       required String info,
       required String mail,
-      required this.data});
+      required this.data,
+      required this.nam});
 
   @override
   State<CollectorHomePage> createState() => _CollectorHomePageState();
@@ -23,17 +26,19 @@ class _CollectorHomePageState extends State<CollectorHomePage> {
   var EmailController = TextEditingController();
   var FeedbackController = TextEditingController();
   late String collectorId;
+  late String name;
 
   @override
   void initState() {
     super.initState();
     collectorId = widget.data;
+    name = widget.nam;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: memuItem(collectorId: collectorId),
+        drawer: memuItem(collectorId: collectorId, name: name),
         appBar: AppBar(
           title: const Text('MilkEasy'),
           actions: [
@@ -41,7 +46,7 @@ class _CollectorHomePageState extends State<CollectorHomePage> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(right: 10.0),
-                  child: Text(widget.data),
+                  child: Text("Hi $name"),
                 ),
                 // memuItem(),
               ],
@@ -256,7 +261,8 @@ class _CollectorHomePageState extends State<CollectorHomePage> {
 
 class memuItem extends StatelessWidget {
   final String collectorId;
-  memuItem({required this.collectorId});
+  final String name;
+  memuItem({required this.collectorId, required this.name});
   final List DrawerItemList = [
     {
       "title": 'Profile',
@@ -308,14 +314,15 @@ class memuItem extends StatelessWidget {
                         builder: (context) => profile(data: collectorId)));
                   } else if (e['action_id'] == 4) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            Collection_form(collectorId: collectorId)));
+                        builder: (context) => Collection_form(
+                            collectorId: collectorId, name: name)));
                   } else if (e['action_id'] == 5) {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) => login()));
                   } else if (e['action_id'] == 7) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MilkCollectionList()));
+                        builder: (context) =>
+                            Collectors_collection_Data(name: name)));
                   }
                 }));
           }).toList(),

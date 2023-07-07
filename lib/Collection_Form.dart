@@ -4,12 +4,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
-
 import 'package:milkeasy/dataclass/UserName.dart';
 
 class Collection_form extends StatefulWidget {
-  const Collection_form({super.key, required this.collectorId});
   final String collectorId;
+  final String name;
+  const Collection_form(
+      {super.key, required this.collectorId, required this.name});
+
   @override
   State<Collection_form> createState() => _Collection_formState();
 }
@@ -23,7 +25,7 @@ class _Collection_formState extends State<Collection_form> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       var data = {
-        "collectorId": collectorId,
+        "Collector_name": name,
         "shift": _dropDownValue,
         "Farmer_name": selectedUsername!.name,
         "fat": fatController.text,
@@ -84,12 +86,14 @@ class _Collection_formState extends State<Collection_form> {
   List<Username> usernames = [];
   Username? selectedUsername;
   late String collectorId;
+  late String name;
 
   @override
   void initState() {
     super.initState();
     fetchUsernames();
     collectorId = widget.collectorId;
+    name = widget.name;
   }
 
   Future<void> fetchUsernames() async {

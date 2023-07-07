@@ -37,7 +37,7 @@ class _loginState extends State<login> {
           builder: (context) => MyHomePage(
             title: "",
             data: mail,
-            nam: name, // Pass the name to the next screen
+            name: name,
           ),
         ));
         print(name);
@@ -47,12 +47,14 @@ class _loginState extends State<login> {
             mail: mail,
             info: "Admin",
             data: mail,
+            nam: name,
           ),
         ));
       } else if (usertype == "Farmer") {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => FarmerHomePage(
             data: mail,
+            name: name,
           ),
         ));
       }

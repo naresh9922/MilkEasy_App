@@ -58,38 +58,38 @@ class _collectionState extends State<collection> {
                   height: 20,
                 ),
                 const TextField(
-                  keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                  labelText: 'Farmer Name',
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                )),
+                      labelText: 'Farmer Name',
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    )),
                 const SizedBox(
                   height: 20,
                 ),
                 const TextField(
-                  keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  labelText: 'Fat',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                )),
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      labelText: 'Fat',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    )),
                 const SizedBox(
                   height: 20,
                 ),
                 const TextField(
-                  keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  labelText: 'Milk Quantity',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                )),
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      labelText: 'Milk Quantity',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    )),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: SizedBox(

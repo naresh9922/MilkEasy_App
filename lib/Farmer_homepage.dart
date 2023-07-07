@@ -5,8 +5,10 @@ import 'package:milkeasy/prorile_farmer.dart';
 import 'api/feedback_api.dart';
 
 class FarmerHomePage extends StatefulWidget {
-  const FarmerHomePage({super.key, required this.data});
   final String data;
+  final String name;
+  const FarmerHomePage({super.key, required this.data, required this.name});
+
   @override
   State<FarmerHomePage> createState() => _FarmerHomePageState();
 }
@@ -16,19 +18,20 @@ class _FarmerHomePageState extends State<FarmerHomePage> {
   var nameController = TextEditingController();
   var EmailController = TextEditingController();
   var FeedbackController = TextEditingController();
-
   late String collectorId;
+  late String name;
 
   @override
   void initState() {
     super.initState();
+    name = widget.name;
     collectorId = widget.data;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: memuItem(collectorId: collectorId),
+        drawer: memuItem(collectorId: collectorId, name: name),
         appBar: AppBar(
           title: const Text('MilkEasy'),
           actions: [
@@ -36,7 +39,7 @@ class _FarmerHomePageState extends State<FarmerHomePage> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(right: 10.0),
-                  child: Text(widget.data),
+                  child: Text("Hi $name"),
                 ),
               ],
             )
@@ -250,7 +253,8 @@ class _FarmerHomePageState extends State<FarmerHomePage> {
 
 class memuItem extends StatelessWidget {
   final String collectorId;
-  memuItem({required this.collectorId});
+  final String name;
+  memuItem({required this.collectorId, required this.name});
   final List DrawerItemList = [
     {
       "title": 'Profile',
@@ -301,8 +305,8 @@ class memuItem extends StatelessWidget {
                         .push(MaterialPageRoute(builder: (context) => login()));
                   } else if (e['action_id'] == 7) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            FarmerMilkCollection(data: collectorId)));
+                        builder: (context) => FarmerMilkCollection(
+                            data: collectorId, name: name)));
                   }
                 }));
           }).toList(),
