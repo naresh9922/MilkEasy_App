@@ -18,6 +18,8 @@ class _farmer_listState extends State<farmer_list> {
   Future apicall() async {
     http.Response response;
     response =
+        // await http
+        // .post(Uri.parse("http://192.168.137.97:2000/user/fetchFarmers"));
         await http.post(Uri.parse("http://192.168.1.7:2000/user/fetchFarmers"));
     if (response.statusCode == 200) {
       if (mounted) {
