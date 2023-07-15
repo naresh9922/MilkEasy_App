@@ -23,10 +23,9 @@ class _Farmer_profileState extends State<Farmer_profile> {
     http.Response response;
     mailId = widget.data;
 
-    response = await http
-        .post(Uri.parse("http://192.168.1.7:2000/user/FarmerProfile/$mailId"));
-    // .post(
-    //     Uri.parse("http://192.168.137.97:2000/user/FarmerProfile/$mailId"));
+    response = await http.post(
+        Uri.parse("http://192.168.174.222:2000/user/FarmerProfile/$mailId"));
+    // .post(Uri.parse("http://192.168.1.7:2000/user/FarmerProfile/$mailId"));
     if (response.statusCode == 200) {
       setState(() {
         mapRes = json.decode(response.body);

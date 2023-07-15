@@ -4,7 +4,6 @@ import 'package:milkeasy/Collectors_collection_data.dart';
 import 'package:milkeasy/api/feedback_api.dart';
 import 'package:milkeasy/login.dart';
 import 'package:milkeasy/profile_collector.dart';
-import 'package:milkeasy/fetch_All_collection_data.dart';
 
 class CollectorHomePage extends StatefulWidget {
   final String data;

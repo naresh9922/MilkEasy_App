@@ -19,8 +19,8 @@ class _GetFeedbackState extends State<GetFeedback> {
   Future apicall() async {
     http.Response response;
     response =
-        // await http.post(Uri.parse("http://192.168.137.97:2000/feedback/get"));
-        await http.post(Uri.parse("http://192.168.1.7:2000/feedback/get"));
+        await http.post(Uri.parse("http://192.168.174.222:2000/feedback/get"));
+    // await http.post(Uri.parse("http://192.168.1.7:2000/feedback/get"));
     if (response.statusCode == 200) {
       setState(() {
         // strRes = response.body;
@@ -42,40 +42,6 @@ class _GetFeedbackState extends State<GetFeedback> {
       appBar: AppBar(
         title: Text("Feedbacks"),
       ),
-      // body: SizedBox(
-      //   height: 300,
-      //   child: SingleChildScrollView(
-      //     scrollDirection: Axis.vertical,
-      //     child: GridView.count(
-      //       crossAxisCount: 2,
-      //       children: [
-      //         DataTable(
-      //           columnSpacing: 16.0,
-      //           columns: [
-      //             DataColumn(label: Text('ID')),
-      //             DataColumn(label: Text('Name')),
-      //             DataColumn(label: Text('Mobile')),
-      //             DataColumn(label: Text('Feedback')),
-      //           ],
-      //           rows: List<DataRow>.generate(
-      //             listRes.length,
-      //             (index) => DataRow(
-      //               cells: [
-      //                 DataCell(Text('${index + 1}')),
-      //                 DataCell(Text(listRes[index]['name'].toString())),
-      //                 DataCell(Text(listRes[index]['mo_no'].toString())),
-      //                 DataCell(Container(
-      //                     width: double.infinity,
-      //                     child: Text(listRes[index]['feedback'].toString()))),
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
-
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: SingleChildScrollView(

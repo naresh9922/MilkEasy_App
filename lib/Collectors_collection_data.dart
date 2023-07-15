@@ -19,10 +19,11 @@ class _MilkCollectionListState extends State<Collectors_collection_Data> {
 
   Future apicall() async {
     http.Response response;
-    response = await http
-        //     .post(Uri.parse("http://192.168.137.97:2000/milk/CollectorsMilkcollection"));
-        .post(Uri.parse(
-            "http://192.168.1.7:2000/milk/CollectorsMilkcollection/$name"));
+    response = await http.post(Uri.parse(
+        "http://192.168.174.222:2000/milk/CollectorsMilkcollection/$name"));
+    // response = await http
+    //     .post(Uri.parse(
+    //         "http://192.168.1.7:2000/milk/CollectorsMilkcollection/$name"));
     if (response.statusCode == 200) {
       if (mounted) {
         setState(() {

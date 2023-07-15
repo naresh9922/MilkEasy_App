@@ -15,7 +15,7 @@ class _Set_RateState extends State<Set_Rate> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       var data = {
-        "qty": rateController.text,
+        "rate": rateController.text,
       };
 
       Api.SetRate(data);

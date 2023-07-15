@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Api {
-  // static const baseurl = "http://192.168.137.97:5000/api/";
-  static const baseurl = "http://192.168.1.7:5000/api/";
+  // static const baseurl = "http://192.168.1.7:5000/api/";
+  static const baseurl = "http://192.168.174.222:5000/api/"; // mymobile
 //post method ---------------------------------------------
 
   static AddProduct(Map Fdata) async {

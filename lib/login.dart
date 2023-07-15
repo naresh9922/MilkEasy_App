@@ -21,7 +21,8 @@ class _loginState extends State<login> {
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _login() async {
-    var url = Uri.parse("http://192.168.1.7:2000/login/login");
+    // var url = Uri.parse("http://192.168.1.7:2000/login/login");
+    var url = Uri.parse("http://192.168.174.222:2000/login/login"); // mymobile
     var data = {
       'email': _usernameController.text,
       'password': _passwordController.text,

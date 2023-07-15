@@ -19,8 +19,8 @@ class _UserListState extends State<UserList> {
   Future apicall() async {
     http.Response response;
     response = await http
-        // .post(Uri.parse("http://192.168.137.97:2000/user/fetchCollector"));
-        .post(Uri.parse("http://192.168.1.7:2000/user/fetchCollector"));
+        .post(Uri.parse("http://192.168.174.222:2000/user/fetchCollector"));
+    // .post(Uri.parse("http://192.168.1.7:2000/user/fetchCollector"));
     if (response.statusCode == 200) {
       if (mounted) {
         setState(() {
