@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class GetFeedback extends StatefulWidget {
   const GetFeedback({super.key});
@@ -18,8 +19,7 @@ class _GetFeedbackState extends State<GetFeedback> {
 
   Future apicall() async {
     http.Response response;
-    response =
-        await http.post(Uri.parse("http://192.168.174.222:2000/feedback/get"));
+    response = await http.post(Uri.parse("${dotenv.env['link']}feedback/get"));
     // await http.post(Uri.parse("http://192.168.1.7:2000/feedback/get"));
     if (response.statusCode == 200) {
       setState(() {

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Api {
-  static const baseurl = "http://192.168.174.222:2000/"; // mymobile
+  static const baseurl = "http://127.0.0.1:2000/"; // mymobile
   // static const baseurl = "http://192.168.1.7:2000/";
 //post method ---------------------------------------------
 

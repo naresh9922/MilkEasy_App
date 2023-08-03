@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class farmer_list extends StatefulWidget {
   const farmer_list();
@@ -17,9 +18,8 @@ class _farmer_listState extends State<farmer_list> {
 
   Future apicall() async {
     http.Response response;
-    response = await http
-        .post(Uri.parse("http://192.168.174.222:2000/user/fetchFarmers"));
-    // await http.post(Uri.parse("http://192.168.1.7:2000/user/fetchFarmers"));
+    response =
+        await http.post(Uri.parse("${dotenv.env['link']}user/fetchFarmers"));
     if (response.statusCode == 200) {
       if (mounted) {
         setState(() {

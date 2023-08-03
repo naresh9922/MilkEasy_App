@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class UserList extends StatefulWidget {
   const UserList({super.key});
@@ -18,9 +19,8 @@ class _UserListState extends State<UserList> {
 
   Future apicall() async {
     http.Response response;
-    response = await http
-        .post(Uri.parse("http://192.168.174.222:2000/user/fetchCollector"));
-    // .post(Uri.parse("http://192.168.1.7:2000/user/fetchCollector"));
+    response =
+        await http.post(Uri.parse("${dotenv.env['link']}user/fetchCollector"));
     if (response.statusCode == 200) {
       if (mounted) {
         setState(() {

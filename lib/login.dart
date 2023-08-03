@@ -1,12 +1,10 @@
-// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 import 'dart:convert';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:milkeasy/Farmer_homepage.dart';
 import 'package:milkeasy/CollectorHomepage.dart';
 import 'package:milkeasy/main.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -21,8 +19,7 @@ class _loginState extends State<login> {
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _login() async {
-    // var url = Uri.parse("http://192.168.1.7:2000/login/login");
-    var url = Uri.parse("http://192.168.174.222:2000/login/login"); // mymobile
+    var url = Uri.parse("${dotenv.env['link']}login/login"); // mymobile
     var data = {
       'email': _usernameController.text,
       'password': _passwordController.text,
@@ -255,17 +252,6 @@ class _loginState extends State<login> {
                       child: ElevatedButton(
                           onPressed: _login, child: const Text('Login'))),
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.end,
-                //   children: [
-                //     TextButton(
-                //       child: Text(
-                //         "Forgot password",
-                //       ),
-                //       onPressed: () {},
-                //     ),
-                //   ],
-                // )
               ],
             ),
           ),

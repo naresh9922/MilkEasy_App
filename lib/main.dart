@@ -9,14 +9,15 @@ import 'package:milkeasy/login.dart';
 import 'package:milkeasy/Collector_list.dart';
 import 'package:milkeasy/fetch_All_collection_data.dart';
 import 'api/feedback_api.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
+  await dotenv.load(fileName: "lib/.env");
 }
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
-
   @override
   State<MyApp> createState() => _MyAppState();
 }

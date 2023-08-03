@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Collectors_collection_Data extends StatefulWidget {
   final String name;
@@ -19,11 +20,9 @@ class _MilkCollectionListState extends State<Collectors_collection_Data> {
 
   Future apicall() async {
     http.Response response;
-    response = await http.post(Uri.parse(
-        "http://192.168.174.222:2000/milk/CollectorsMilkcollection/$name"));
-    // response = await http
-    //     .post(Uri.parse(
-    //         "http://192.168.1.7:2000/milk/CollectorsMilkcollection/$name"));
+    response = await http.post(
+        Uri.parse("${dotenv.env['link']}milk/CollectorsMilkcollection/$name"));
+
     if (response.statusCode == 200) {
       if (mounted) {
         setState(() {
